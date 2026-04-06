@@ -1,26 +1,58 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-brand-bg: #04070f;
+  --color-brand-card-bg: rgb(59 130 246 / 0.08);
+  --color-brand-card-border: rgb(59 130 246 / 0.20);
+  --color-brand-blue: #3b82f6;
+  --color-brand-sky: #38bdf8;
+  --color-brand-text-primary: #eff6ff;
+  --color-brand-text-secondary: #93c5fd;
+  --color-brand-text-muted: #1e3a5f;
+
+  --background-image-brand-gradient: linear-gradient(90deg, #60a5fa, #38bdf8);
+  --background-image-glow-tl: radial-gradient(circle, rgb(59 130 246 / 0.35) 0%, transparent 70%);
+  --background-image-glow-br: radial-gradient(circle, rgb(14 165 233 / 0.20) 0%, transparent 70%);
+
+  --shadow-glow-blue: 0 0 10px #3b82f6;
+  --shadow-glow-green: 0 0 8px #4ade80;
+  --shadow-glow-sm: 0 0 6px #3b82f6;
+
+  --animate-pulse-slow: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+*, *::before, *::after {
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+html, body {
+  background-color: #04070f;
+  color: #eff6ff;
+  font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
+  min-height: 100vh;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(59, 130, 246, 0.3); border-radius: 2px; }
+
+@layer utilities {
+  .text-brand-gradient {
+    background: linear-gradient(90deg, #60a5fa, #38bdf8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  .card-base {
+    background: rgba(59, 130, 246, 0.08);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    border-radius: 12px;
+  }
+  .glow-dot-green {
+    box-shadow: 0 0 6px #4ade80;
+  }
+  .glow-dot-blue {
+    box-shadow: 0 0 6px #3b82f6;
+  }
 }
