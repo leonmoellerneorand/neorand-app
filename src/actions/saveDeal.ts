@@ -5,6 +5,7 @@ import type { Deal } from '@/types'
 
 type DealUpdate = Partial<Pick<Deal,
   'solution_name' | 'solution_description' | 'status' | 'subscription_status' |
+  'payment_status' | 'subscription_amount' | 'one_time_amount' |
   'next_payment_date' | 'payment_method_last4' | 'stripe_customer_id' | 'stripe_subscription_id'
 >>
 
