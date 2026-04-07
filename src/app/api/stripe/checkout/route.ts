@@ -3,6 +3,7 @@ import { headers } from 'next/headers'
 import { createServerClient as createSupabaseAuthClient } from '@supabase/auth-helpers-nextjs'
 import { createServerClient } from '@/lib/supabase/server'
 import { getStripe } from '@/lib/stripe'
+import type Stripe from 'stripe'
 
 const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? 'http://localhost:3000'
 
@@ -75,7 +76,7 @@ export async function POST(req: Request) {
     await db.from('deals').update({ stripe_customer_id: customerId }).eq('id', deal.id)
   }
 
-  const lineItems: Parameters<typeof stripe.checkout.sessions.create>[0]['line_items'] = [
+  const lineItems: Stripe.Checkout.SessionCreateParams.LineItem[] = [
     {
       price_data: {
         currency: 'mxn',
