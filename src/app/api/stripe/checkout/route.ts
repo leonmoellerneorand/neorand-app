@@ -75,7 +75,7 @@ export async function POST(req: Request) {
     await db.from('deals').update({ stripe_customer_id: customerId }).eq('id', deal.id)
   }
 
-  const lineItems: { price_data: { currency: string; product_data: { name: string }; unit_amount: number; recurring?: { interval: string } }; quantity: number }[] = [
+  const lineItems: { price_data: { currency: string; product_data: { name: string }; unit_amount: number; recurring?: { interval: 'month' | 'year' | 'week' | 'day' } }; quantity: number }[] = [
     {
       price_data: {
         currency: 'mxn',
