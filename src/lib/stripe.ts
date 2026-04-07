@@ -1,6 +1,21 @@
 import Stripe from 'stripe'
 
-export const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-  apiVersion: '2024-04-10',
-  typescript: true,
-})
+let _stripe: Stripe | null = null
+
+export function getStripe(): Stripe {
+  if (!_stripe) {
+    _stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
+      apiVersion: '2024-04-10',
+      typescript: true,
+    })
+  }
+  return _stripe
+}
+
+// Keep named export for backward compatibility within the codebase
+export const stripe = {
+  get billingPortal() { return getStripe().billingPortal },
+  get invoices() { return getStripe().invoices },
+  get webhooks() { return getStripe().webhooks },
+  get subscriptions() { return getStripe().subscriptions },
+}

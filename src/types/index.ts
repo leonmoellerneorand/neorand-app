@@ -10,6 +10,8 @@ export interface Deal {
   solution_description: string | null
   subscription_status: 'activa' | 'pago fallido' | 'cancelada'
   subscription_amount: number
+  one_time_amount: number
+  payment_status: 'pending_payment' | 'active'
   next_payment_date: string | null
   stripe_customer_id: string | null
   stripe_subscription_id: string | null
