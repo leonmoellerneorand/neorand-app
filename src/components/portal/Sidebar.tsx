@@ -34,7 +34,7 @@ export function Sidebar({ contact }: { contact: Contact }) {
   return (
     <>
       {/* Desktop sidebar */}
-      <aside className="hidden md:flex flex-col fixed left-0 top-0 h-full w-56 border-r border-brand-card-border bg-[#020510] z-40">
+      <aside className="hidden md:flex flex-col fixed left-0 top-0 h-full w-56 border-r border-brand-blue/20 bg-[#020510] z-40" style={{ boxShadow: '1px 0 20px rgba(59,130,246,0.06)' }}>
         {/* Logo */}
         <div className="px-5 py-6 border-b border-brand-card-border">
           <div className="flex items-center gap-2">
