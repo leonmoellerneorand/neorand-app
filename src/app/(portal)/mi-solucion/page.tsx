@@ -43,7 +43,7 @@ export default async function MiSolucionPage() {
             <h1 className="text-2xl font-bold text-brand-text-primary">
               {d.solution_name ?? 'Mi Solución'}
             </h1>
-            <p className="text-brand-text-muted text-sm mt-1">{d.contacts.company}</p>
+            <p className="text-brand-text-muted text-sm mt-1">{d.contacts?.company}</p>
           </div>
           <StatusBadge status={d.status} />
         </div>
