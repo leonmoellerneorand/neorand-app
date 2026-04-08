@@ -35,6 +35,8 @@ export default async function PortalLayout({ children }: { children: React.React
 
   if (!deal) redirect('/register')
 
+  if (deal.payment_status === 'pending_payment') redirect('/pay')
+
   // Fetch contact separately if contact_id exists
   let contact = null
   if (deal.contact_id) {
