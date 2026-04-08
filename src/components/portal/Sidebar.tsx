@@ -34,12 +34,12 @@ export function Sidebar({ contact }: { contact: Contact }) {
   return (
     <>
       {/* Desktop sidebar */}
-      <aside className="hidden md:flex flex-col fixed left-0 top-0 h-full w-56 border-r border-brand-blue/20 bg-[#020510] z-40" style={{ boxShadow: '1px 0 20px rgba(59,130,246,0.06)' }}>
+      <aside className="hidden md:flex flex-col fixed left-0 top-0 h-full w-56 border-r border-brand-blue/20 bg-[#020510]/90 z-40" style={{ boxShadow: '1px 0 30px rgba(59,130,246,0.08)', backdropFilter: 'blur(16px)' }}>
         {/* Logo */}
-        <div className="px-5 py-6 border-b border-brand-card-border">
-          <div className="flex items-center gap-2">
-            <div className="w-2 h-2 rounded-full bg-brand-blue shadow-glow-sm flex-shrink-0" />
-            <span className="text-brand-gradient font-black text-base tracking-widest uppercase">NEORAND</span>
+        <div className="px-5 py-6 border-b border-brand-blue/10">
+          <div className="flex items-center gap-2.5">
+            <div className="w-2 h-2 rounded-full bg-brand-blue flex-shrink-0 animate-pulse" style={{ boxShadow: '0 0 8px #3b82f6, 0 0 16px rgba(59,130,246,0.4)' }} />
+            <span className="text-brand-gradient font-black text-base tracking-[0.2em] uppercase">NEORAND</span>
           </div>
         </div>
 
@@ -52,8 +52,8 @@ export function Sidebar({ contact }: { contact: Contact }) {
               className={cn(
                 'flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm transition-all',
                 pathname === href || pathname.startsWith(href + '/')
-                  ? 'bg-brand-blue/10 text-brand-sky border border-brand-blue/20'
-                  : 'text-brand-text-muted hover:text-brand-text-secondary hover:bg-brand-card-bg'
+                  ? 'bg-brand-blue/10 text-brand-sky border border-brand-blue/25 shadow-[0_0_12px_rgba(59,130,246,0.1)]'
+                  : 'text-[#2d5a8e] hover:text-brand-text-secondary hover:bg-brand-blue/5'
               )}
             >
               <Icon size={16} />
@@ -63,7 +63,7 @@ export function Sidebar({ contact }: { contact: Contact }) {
         </nav>
 
         {/* User */}
-        <div className="px-3 py-4 border-t border-brand-card-border">
+        <div className="px-3 py-4 border-t border-brand-blue/10">
           <div className="flex items-center gap-3 px-3 py-2 mb-1">
             <div className="w-7 h-7 rounded-full bg-gradient-to-br from-brand-blue to-brand-sky flex-shrink-0 flex items-center justify-center text-xs font-bold text-white">
               {contact?.full_name?.charAt(0).toUpperCase() ?? '?'}

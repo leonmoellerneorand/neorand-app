@@ -2,8 +2,8 @@
 
 @theme {
   --color-brand-bg: #04070f;
-  --color-brand-card-bg: rgb(59 130 246 / 0.08);
-  --color-brand-card-border: rgb(59 130 246 / 0.20);
+  --color-brand-card-bg: rgb(59 130 246 / 0.06);
+  --color-brand-card-border: rgb(59 130 246 / 0.18);
   --color-brand-blue: #3b82f6;
   --color-brand-sky: #38bdf8;
   --color-brand-text-primary: #eff6ff;
@@ -19,6 +19,9 @@
   --shadow-glow-sm: 0 0 6px #3b82f6;
 
   --animate-pulse-slow: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+
+  --font-syne: var(--font-syne);
+  --font-mono: var(--font-mono);
 }
 
 *, *::before, *::after {
@@ -28,7 +31,7 @@
 html, body {
   background-color: #04070f;
   color: #eff6ff;
-  font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
+  font-family: var(--font-syne), -apple-system, BlinkMacSystemFont, sans-serif;
   min-height: 100vh;
 }
 
@@ -44,11 +47,73 @@ html, body {
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
+
+  /* Base card — glass panel with top-edge highlight */
   .card-base {
-    background: rgba(59, 130, 246, 0.08);
-    border: 1px solid rgba(59, 130, 246, 0.2);
+    background: rgba(4, 10, 24, 0.85);
+    border: 1px solid rgba(59, 130, 246, 0.18);
+    border-top-color: rgba(59, 130, 246, 0.35);
     border-radius: 12px;
+    box-shadow:
+      inset 0 1px 0 rgba(59, 130, 246, 0.12),
+      0 4px 24px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
   }
+
+  /* HUD scan-line sweep on hover */
+  .card-hud {
+    position: relative;
+    overflow: hidden;
+  }
+  .card-hud::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      transparent 0%,
+      rgba(59, 130, 246, 0.04) 50%,
+      transparent 100%
+    );
+    transform: translateY(-100%);
+    transition: transform 0.7s ease;
+    pointer-events: none;
+    z-index: 1;
+  }
+  .card-hud:hover::before {
+    transform: translateY(100%);
+  }
+
+  /* Corner bracket decorators */
+  .corner-bracket {
+    position: relative;
+  }
+  .corner-bracket::before,
+  .corner-bracket::after {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    pointer-events: none;
+  }
+  .corner-bracket::before {
+    top: 4px;
+    left: 4px;
+    border-top: 1.5px solid rgba(59, 130, 246, 0.5);
+    border-left: 1.5px solid rgba(59, 130, 246, 0.5);
+  }
+  .corner-bracket::after {
+    bottom: 4px;
+    right: 4px;
+    border-bottom: 1.5px solid rgba(59, 130, 246, 0.5);
+    border-right: 1.5px solid rgba(59, 130, 246, 0.5);
+  }
+
+  .font-data {
+    font-family: var(--font-mono), 'Courier New', monospace;
+  }
+
   .glow-dot-green {
     box-shadow: 0 0 6px #4ade80;
   }

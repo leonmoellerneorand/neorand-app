@@ -1,14 +1,31 @@
 'use client'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 
 export default function PaymentSuccessPage() {
   const router = useRouter()
+  const [dots, setDots] = useState('.')
 
   useEffect(() => {
-    // Give webhook a moment to process then redirect to dashboard
-    const timer = setTimeout(() => router.replace('/dashboard'), 3000)
-    return () => clearTimeout(timer)
+    const dotsInterval = setInterval(() => {
+      setDots(d => d.length >= 3 ? '.' : d + '.')
+    }, 500)
+
+    // Poll until payment_status is active
+    const pollInterval = setInterval(async () => {
+      const res = await fetch('/api/deal/me')
+      const data = await res.json()
+      if (data.deal?.payment_status === 'active') {
+        clearInterval(pollInterval)
+        clearInterval(dotsInterval)
+        router.replace('/dashboard')
+      }
+    }, 2000)
+
+    return () => {
+      clearInterval(pollInterval)
+      clearInterval(dotsInterval)
+    }
   }, [])
 
   return (
@@ -18,8 +35,8 @@ export default function PaymentSuccessPage() {
           <span className="text-4xl">✓</span>
         </div>
         <h1 className="text-3xl font-extrabold text-brand-text-primary mb-2">¡Pago exitoso!</h1>
-        <p className="text-brand-text-muted mb-2">Tu solución está siendo activada.</p>
-        <p className="text-brand-text-muted text-sm">Redirigiendo a tu dashboard...</p>
+        <p className="text-brand-text-muted mb-2">Activando tu solución{dots}</p>
+        <p className="text-brand-text-muted text-sm">Esto tomará unos segundos.</p>
       </div>
     </div>
   )

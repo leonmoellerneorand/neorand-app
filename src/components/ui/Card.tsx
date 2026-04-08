@@ -10,7 +10,7 @@ interface CardProps {
 export function Card({ children, className, glow }: CardProps) {
   return (
     <div className={cn(
-      'card-base p-5',
+      'card-base card-hud corner-bracket p-5',
       glow && 'shadow-glow-sm',
       className
     )}>
@@ -21,7 +21,7 @@ export function Card({ children, className, glow }: CardProps) {
 
 export function CardLabel({ children }: { children: React.ReactNode }) {
   return (
-    <p className="text-[10px] font-semibold text-brand-text-muted uppercase tracking-widest mb-1.5">
+    <p className="text-[10px] font-semibold text-brand-text-muted uppercase tracking-[0.15em] mb-1.5">
       {children}
     </p>
   )

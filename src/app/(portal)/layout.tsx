@@ -5,6 +5,7 @@ import { createServerClient as createSupabaseServerClient } from '@supabase/auth
 import { createServerClient } from '@/lib/supabase/server'
 import { DealProvider } from '@/components/portal/DealContext'
 import { Sidebar } from '@/components/portal/Sidebar'
+import { PortalBackground } from '@/components/portal/PortalBackground'
 import type { DealWithContact } from '@/types'
 
 export default async function PortalLayout({ children }: { children: React.ReactNode }) {
@@ -53,24 +54,15 @@ export default async function PortalLayout({ children }: { children: React.React
   return (
     <DealProvider deal={dealWithContact}>
       <div className="flex min-h-screen relative">
-        {/* Background decorative layer */}
+        <PortalBackground />
+
+        {/* Static ambient glows behind content */}
         <div className="fixed inset-0 pointer-events-none overflow-hidden" style={{ zIndex: 0 }}>
-          {/* Grid pattern */}
-          <div className="absolute inset-0" style={{
-            backgroundImage: 'linear-gradient(rgba(59,130,246,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(59,130,246,0.04) 1px, transparent 1px)',
-            backgroundSize: '48px 48px',
+          <div className="absolute -top-40 -left-40 w-[700px] h-[700px] rounded-full" style={{
+            background: 'radial-gradient(circle, rgba(59,130,246,0.08) 0%, transparent 65%)',
           }} />
-          {/* Top-left glow */}
-          <div className="absolute -top-32 -left-32 w-[600px] h-[600px] rounded-full" style={{
-            background: 'radial-gradient(circle, rgba(59,130,246,0.12) 0%, transparent 70%)',
-          }} />
-          {/* Bottom-right glow */}
-          <div className="absolute -bottom-32 -right-32 w-[500px] h-[500px] rounded-full" style={{
-            background: 'radial-gradient(circle, rgba(14,165,233,0.10) 0%, transparent 70%)',
-          }} />
-          {/* Center subtle glow */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px]" style={{
-            background: 'radial-gradient(ellipse, rgba(59,130,246,0.04) 0%, transparent 70%)',
+          <div className="absolute -bottom-40 -right-20 w-[500px] h-[500px] rounded-full" style={{
+            background: 'radial-gradient(circle, rgba(14,165,233,0.06) 0%, transparent 65%)',
           }} />
         </div>
 
