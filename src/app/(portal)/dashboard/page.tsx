@@ -53,9 +53,9 @@ export default async function DashboardPage() {
       {/* Header */}
       <div className="mb-8">
         <h1 className="text-2xl font-bold text-brand-text-primary">
-          {greeting}, {d.contacts.full_name.split(' ')[0]}
+          {greeting}, {d.contacts?.full_name?.split(' ')[0] ?? 'Cliente'}
         </h1>
-        <p className="text-brand-text-muted text-sm mt-1">{d.contacts.company}</p>
+        <p className="text-brand-text-muted text-sm mt-1">{d.contacts?.company}</p>
       </div>
 
       {/* Stat cards */}

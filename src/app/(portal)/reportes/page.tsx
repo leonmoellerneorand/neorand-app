@@ -93,8 +93,8 @@ export default async function ReportesPage() {
                 </div>
                 <DownloadReportButton data={{
                   month: row.month,
-                  contactName: d.contacts.full_name,
-                  company: d.contacts.company ?? '',
+                  contactName: d.contacts?.full_name ?? '',
+                  company: d.contacts?.company ?? '',
                   solutionName: d.solution_name ?? '',
                   total: row.total,
                   success: row.success,
