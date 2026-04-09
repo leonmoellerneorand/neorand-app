@@ -33,6 +33,7 @@ html, body {
   color: #eff6ff;
   font-family: var(--font-syne), -apple-system, BlinkMacSystemFont, sans-serif;
   min-height: 100vh;
+  line-height: 1.6;
 }
 
 /* Scrollbar */
@@ -64,25 +65,26 @@ html, body {
   /* HUD scan-line sweep on hover */
   .card-hud {
     position: relative;
-    overflow: hidden;
   }
   .card-hud::before {
     content: '';
     position: absolute;
     inset: 0;
+    overflow: hidden;
     background: linear-gradient(
       180deg,
       transparent 0%,
       rgba(59, 130, 246, 0.04) 50%,
       transparent 100%
     );
-    transform: translateY(-100%);
+    transform: translateY(-110%);
     transition: transform 0.7s ease;
     pointer-events: none;
     z-index: 1;
+    clip-path: inset(0);
   }
   .card-hud:hover::before {
-    transform: translateY(100%);
+    transform: translateY(110%);
   }
 
   /* Corner bracket decorators */
