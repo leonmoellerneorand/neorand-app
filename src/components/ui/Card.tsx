@@ -10,7 +10,7 @@ interface CardProps {
 export function Card({ children, className, glow }: CardProps) {
   return (
     <div className={cn(
-      'card-base card-hud corner-bracket p-5',
+      'card-base corner-bracket p-5',
       glow && 'shadow-glow-sm',
       className
     )}>

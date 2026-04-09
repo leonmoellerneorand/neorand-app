@@ -62,32 +62,7 @@ html, body {
     -webkit-backdrop-filter: blur(12px);
   }
 
-  /* HUD scan-line sweep on hover */
-  .card-hud {
-    position: relative;
-  }
-  .card-hud::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    overflow: hidden;
-    background: linear-gradient(
-      180deg,
-      transparent 0%,
-      rgba(59, 130, 246, 0.04) 50%,
-      transparent 100%
-    );
-    transform: translateY(-110%);
-    transition: transform 0.7s ease;
-    pointer-events: none;
-    z-index: 1;
-    clip-path: inset(0);
-  }
-  .card-hud:hover::before {
-    transform: translateY(110%);
-  }
-
-  /* Corner bracket decorators */
+  /* Corner bracket decorators — grow on hover, never leave card */
   .corner-bracket {
     position: relative;
   }
@@ -98,18 +73,26 @@ html, body {
     width: 10px;
     height: 10px;
     pointer-events: none;
+    transition: width 0.3s ease, height 0.3s ease, opacity 0.3s ease;
   }
   .corner-bracket::before {
-    top: 4px;
-    left: 4px;
-    border-top: 1.5px solid rgba(59, 130, 246, 0.5);
-    border-left: 1.5px solid rgba(59, 130, 246, 0.5);
+    top: 6px;
+    left: 6px;
+    border-top: 1.5px solid rgba(59, 130, 246, 0.4);
+    border-left: 1.5px solid rgba(59, 130, 246, 0.4);
   }
   .corner-bracket::after {
-    bottom: 4px;
-    right: 4px;
-    border-bottom: 1.5px solid rgba(59, 130, 246, 0.5);
-    border-right: 1.5px solid rgba(59, 130, 246, 0.5);
+    bottom: 6px;
+    right: 6px;
+    border-bottom: 1.5px solid rgba(59, 130, 246, 0.4);
+    border-right: 1.5px solid rgba(59, 130, 246, 0.4);
+  }
+  .corner-bracket:hover::before,
+  .corner-bracket:hover::after {
+    width: 16px;
+    height: 16px;
+    opacity: 1;
+    border-color: rgba(59, 130, 246, 0.75);
   }
 
   .font-data {

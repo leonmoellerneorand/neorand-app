@@ -1,11 +1,11 @@
 // src/app/layout.tsx
 import type { Metadata } from 'next'
-import { Syne, JetBrains_Mono } from 'next/font/google'
+import { Exo_2, JetBrains_Mono } from 'next/font/google'
 import './globals.css'
 
-const syne = Syne({
+const exo2 = Exo_2({
   subsets: ['latin'],
-  weight: ['400', '600', '700', '800'],
+  weight: ['400', '500', '600', '700', '800'],
   variable: '--font-syne',
   display: 'swap',
 })
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="es" className={`${syne.variable} ${jetbrainsMono.variable}`}>
+    <html lang="es" className={`${exo2.variable} ${jetbrainsMono.variable}`}>
       <body>{children}</body>
     </html>
   )
